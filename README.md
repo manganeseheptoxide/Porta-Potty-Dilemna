@@ -1,8 +1,22 @@
-# Porta Potty Dilemna
-**Dilemna:** AI Bots are outside a porta potty and they cant decide who to go first (let's ignore real world logic for now hehe). Hence, they are now trying to convince each other to let them go first!
+# Porta Potty Dilemma  
 
-**The AI Bots Can:**
-- Talk to other bots about the dilemna
-- And vote on who to go first after the discussion period has ended.
+**Dilemma:** AI bots are outside a porta potty, but they can't decide who should go first (let's ignore real-world logic for now, hehe). So, they are now trying to convince each other to let them go first!  
 
-**Add a .streamlit folder and create a secrets.toml file and put your OpenAI API key there. Use this format: OPENAI_API_KEY = "sk-xxx"**
+### **The AI Bots Can:**  
+- Talk to other bots about the dilemma.  
+- Vote on who should go first after the discussion period ends.  
+
+### **Setup Instructions:**  
+1. Add a `.streamlit` folder in your project directory.  
+2. Inside `.streamlit`, create a `secrets.toml` file and add your OpenAI API key using this format:  
+
+   ```toml
+   OPENAI_API_KEY = "sk-xxx"
+   ```  
+
+### **Running the Program:**  
+Run the following command in your terminal:  
+
+```sh
+streamlit run main.py
+```
