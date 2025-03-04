@@ -36,14 +36,16 @@ if prompt := st.chat_input("Type anything and enter to start."):
         while st.session_state.day_timer > 0 and passed < len(st.session_state.active_players) - 1:
             # keeps going until all players passed or when time is out
             player_turn = next(st.session_state.queue)
-            response = st.session_state.players[player_turn].respond()
-            if response.lower() != 'pass':
-                passed = 0
-                st.session_state.day_timer -= 1
-                with st.chat_message("assistant"):
-                    st.markdown(f"{st.session_state.players[player_turn].name}: {response}")
-            else:
-                passed += 1
+            with st.chat_message("assistant"):
+                typing_placeholder = st.empty()
+                typing_placeholder.markdown(f"**{st.session_state.players[player_turn].name} is typing...**")
+                response = st.session_state.players[player_turn].respond()
+                if response.lower() == 'pass':
+                    passed += 1
+                    typing_placeholder.markdown(f"**{st.session_state.players[player_turn].name} passed.**")
+                else:
+                    passed = 0
+                    typing_placeholder.markdown(f"{st.session_state.players[player_turn].name}: {response}")
         # VOTING ROUND
         players = list(st.session_state.active_players.keys())
         player_vote = {name.lower() : 0 for name in players}
